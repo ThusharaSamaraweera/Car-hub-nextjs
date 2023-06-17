@@ -4,8 +4,7 @@ import { CustomButton } from "./custom/CustomButton";
 import Image from "next/image";
 
 export default function Hero() {
-  const handleScroll = () => {
-  }
+  const handleScroll = () => {};
 
   return (
     <div className="hero">
@@ -18,13 +17,12 @@ export default function Hero() {
           containerStyles="bg-primary-blue text-white rounded-full mt-10"
           handleClick={handleScroll}
         />
-        <div className="hero__image-container">
-          <div className="hero__image">
-            <Image src="/hero.png" alt="hero" fill className="object-contain" />
-          </div>
-          <div className="hero__image-overlay" />
-
+      </div>
+      <div className="hero__image-container">
+        <div className="hero__image">
+          <Image src="/hero.png" alt="hero" fill className="object-contain" />
         </div>
+        <div className="hero__image-overlay" />
       </div>
     </div>
   );

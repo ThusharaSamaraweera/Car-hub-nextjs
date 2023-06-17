@@ -1,7 +1,5 @@
-import { Navbar } from '@/components';
+import { Navbar, Footer } from '@/components';
 import './globals.css'
-import { Inter } from 'next/font/google'
-import Footer from '@/components/Footer';
 
 
 export const metadata = {
