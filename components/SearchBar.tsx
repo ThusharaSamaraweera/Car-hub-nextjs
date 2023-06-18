@@ -9,6 +9,7 @@ function SearchBar() {
   const handleOnSearch = () => {
 
   }
+
   return (
     <form className="searchbar" onSubmit={handleOnSearch}>
       <div className="searchbar__item">
