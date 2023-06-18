@@ -1,4 +1,5 @@
-import { Hero, SearchBar } from "@/components";
+import { CarCard, Hero, SearchBar } from "@/components";
+import { ICar } from "@/types";
 import { getCarData } from "@/utils/services";
 
 export default async function Home() {
@@ -21,8 +22,8 @@ export default async function Home() {
         {!isCarDataEmpty ? (
           <section>
             <div className="home__cars-wrapper">
-              {allCars?.map((car) => (
-                <div key={car}>{car.make}</div>
+              {allCars?.map((car: ICar, index) => (
+                <CarCard key={index} car={car} />
               ))}
             </div>
 
