@@ -1,7 +1,10 @@
+"use client";
 import { ICar } from "@/types";
 import { calculateCarRent } from "@/utils/services";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import { CustomButton } from "./custom/CustomButton";
+import CarDetails from "./CarDetails";
 
 interface CarCardProps {
   car: ICar;
@@ -9,6 +12,7 @@ interface CarCardProps {
 
 function CarCard(props: CarCardProps) {
   const { city_mpg, year, make, model, transmission, drive } = props.car;
+  const [isOpen, setOpen] = useState(false);
   const carRent = calculateCarRent(city_mpg, year);
 
   return (
@@ -44,6 +48,18 @@ function CarCard(props: CarCardProps) {
             <p className="car-card__icon-text">{city_mpg} MPG</p>
           </div>
         </div>
+
+        <div className="car-card__btn-container">
+          <CustomButton
+            title="View More"
+            containerStyles="w-full py-[16px] rounded-full bg-primary-blue"
+            textStyles="text-white text-[14px] leading-[17px] font-bold"
+            rightIcon="/right-arrow.svg"
+            handleClick={() => setOpen(true)}
+          />
+        </div>
+
+        <CarDetails isOpen={isOpen} closeModal={() => setOpen(false)} car={props.car} />
       </div>
     </div>
   );
