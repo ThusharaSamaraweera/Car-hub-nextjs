@@ -130,7 +130,7 @@
 
 /* START: Car Card styles */
 .car-card {
-  @apply flex flex-col p-6 justify-center items-start text-black-100 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl;
+  @apply flex flex-col p-6 justify-center items-start text-black-100 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl my-4;
 }
 
 .car-card__content {
@@ -141,4 +141,7 @@
   @apply text-[22px] leading-[26px] font-bold capitalize;
 }
 
+.car-card__icon {
+  @apply flex flex-col justify-center items-center gap-2;
+}
 /* END: Car Card styles */

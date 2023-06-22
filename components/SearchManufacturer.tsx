@@ -49,7 +49,7 @@ function SearchManufacturer(props: SearchManuFacturerProps) {
                     value={manufacturer}>
                     {({ selected, active }) => (
                       <>
-                        <span className={`block truncate ${selected ? "font-medium" : "font-normal"}`}>{item}</span>
+                        <span className={`block truncate ${selected ? "font-medium" : "font-normal"}`}>{manufacturer}</span>
 
                         {/* Show an active blue background color if the option is selected */}
                         {selected ? (
