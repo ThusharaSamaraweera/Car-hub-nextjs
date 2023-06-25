@@ -10,6 +10,7 @@ export async function getCarData(filters: FilterProps) {
   };
   const response = await fetch(url, { headers });
   const result = await response.json();
+  console.log("🚀 ~ file: services.ts:13 ~ getCarData ~ result:", result.length)
   return result;
 }
 
@@ -41,4 +42,17 @@ export const generateCarImageUrl = (car: ICar, angle?: string) => {
   url.searchParams.append("angle", `${angle}`);
 
   return `${url}`;
+};
+
+export const updateSearchParams = (type: string, value: string) => {
+  // Get the current URL search params
+  const searchParams = new URLSearchParams(window.location.search);
+
+  // Set the specified search parameter to the given value
+  searchParams.set(type, value);
+
+  // Set the specified search parameter to the given value
+  const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
+
+  return newPathname;
 };

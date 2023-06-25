@@ -1,4 +1,4 @@
-import { CarCard, Hero, SearchBar } from "@/components";
+import { CarCard, Hero, SearchBar, ShowMore } from "@/components";
 import CustomFilter from "@/components/CustomFilter";
 import { fuels, yearsOfProduction } from "@/contant";
 import { ICar } from "@/types";
@@ -11,7 +11,7 @@ export default async function Home({searchParams}) {
     fuel: searchParams?.fuel || "",
     limit: searchParams?.limit || 10,
     year: searchParams?.year || 2022,
-  })
+  });
 
   const isCarDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars
 
@@ -39,6 +39,8 @@ export default async function Home({searchParams}) {
                 <CarCard key={index} car={car} />
               ))}
             </div>
+
+            <ShowMore pageNumber={(searchParams.limit || 10) / 10} isNext={(searchParams.limit || 10) > allCars.length} />
           </section>
         ) : (
           <div className="home__error-container">
