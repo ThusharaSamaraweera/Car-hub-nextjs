@@ -1,14 +1,16 @@
 import { CarCard, Hero, SearchBar } from "@/components";
+import CustomFilter from "@/components/CustomFilter";
+import { fuels, yearsOfProduction } from "@/contant";
 import { ICar } from "@/types";
 import { getCarData } from "@/utils/services";
 
 export default async function Home({searchParams}) {
   const allCars = await getCarData({
     manufacturer: searchParams?.manufacturer || "",
-    model: searchParams?.model || 2022,
+    model: searchParams?.model || "",
     fuel: searchParams?.fuel || "",
     limit: searchParams?.limit || 10,
-    year: searchParams?.year || "",
+    year: searchParams?.year || 2022,
   })
 
   const isCarDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars
@@ -23,6 +25,11 @@ export default async function Home({searchParams}) {
         </div>
         <div className="home__filters">
           <SearchBar />
+
+          <div className="home__filter-container">
+            <CustomFilter title="fuel" options={fuels} />
+            <CustomFilter title="year" options={yearsOfProduction} />
+          </div>
         </div>
 
         {!isCarDataEmpty ? (
@@ -32,7 +39,6 @@ export default async function Home({searchParams}) {
                 <CarCard key={index} car={car} />
               ))}
             </div>
-
           </section>
         ) : (
           <div className="home__error-container">
