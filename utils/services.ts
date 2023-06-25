@@ -10,6 +10,7 @@ export async function getCarData(filters: FilterProps) {
   };
   const response = await fetch(url, { headers });
   const result = await response.json();
+  console.log("🚀 ~ file: services.ts:13 ~ getCarData ~ result:", result.length)
   return result;
 }
 

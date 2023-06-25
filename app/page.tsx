@@ -11,7 +11,7 @@ export default async function Home({searchParams}) {
     fuel: searchParams?.fuel || "",
     limit: searchParams?.limit || 10,
     year: searchParams?.year || 2022,
-  })
+  });
 
   const isCarDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars
 
