@@ -1,14 +1,16 @@
-import { ICar } from "@/types";
+import { FilterProps, ICar } from "@/types";
 
-export async function getCarData() {
-    const url = "https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla";
+export async function getCarData(filters: FilterProps) {
+  const { manufacturer, year, model, limit, fuel } = filters;
+  const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`;
+
   const headers = {
     "X-RapidAPI-Key": `${process.env.NEXT_PUBLIC_RAPID_API_KEY}`,
-    "X-RapidAPI-Host": 'cars-by-api-ninjas.p.rapidapi.com',
-  };   
-    const response = await fetch(url, { headers });
-    const result = await response.json();
-    return result;
+    "X-RapidAPI-Host": "cars-by-api-ninjas.p.rapidapi.com",
+  };
+  const response = await fetch(url, { headers });
+  const result = await response.json();
+  return result;
 }
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
@@ -39,4 +41,4 @@ export const generateCarImageUrl = (car: ICar, angle?: string) => {
   url.searchParams.append("angle", `${angle}`);
 
   return `${url}`;
-}; 
+};

@@ -2,8 +2,14 @@ import { CarCard, Hero, SearchBar } from "@/components";
 import { ICar } from "@/types";
 import { getCarData } from "@/utils/services";
 
-export default async function Home() {
-  const allCars = await getCarData()
+export default async function Home({searchParams}) {
+  const allCars = await getCarData({
+    manufacturer: searchParams?.manufacturer || "",
+    model: searchParams?.model || 2022,
+    fuel: searchParams?.fuel || "",
+    limit: searchParams?.limit || 10,
+    year: searchParams?.year || "",
+  })
 
   const isCarDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars
 
